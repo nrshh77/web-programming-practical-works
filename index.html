@@ -1,13 +1,55 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>react-project</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+```html
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій список справ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Мій список справ</h1>
+        <p>Плануй свій день та досягай цілей!</p>
+        <nav>
+            <a href="../index.html">Головна</a>
+            <a href="../works.html">Практичні роботи</a>
+            <a href="index.html">Індивідуальний проєкт</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="todo-container">
+            <h2>Мої завдання</h2>
+
+            <form id="todo-form">
+                <input
+                    type="text"
+                    id="todo-input"
+                    placeholder="Введіть нове завдання..."
+                    required
+                >
+                <button type="submit">Додати</button>
+            </form>
+
+            <div class="filters">
+                <button type="button" data-filter="all">Усі</button>
+                <button type="button" data-filter="active">Активні</button>
+                <button type="button" data-filter="completed">Виконані</button>
+            </div>
+
+            <ul id="todo-list"></ul>
+
+            <p id="task-count">Завдань: 0</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Індивідуальний проєкт з вебпрограмування © 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
+```
