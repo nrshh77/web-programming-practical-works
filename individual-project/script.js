@@ -6,7 +6,14 @@ const count = document.getElementById('task-count');
 const filterButtons = document.querySelectorAll('.filters button');
 
 // Завантаження завдань зі сховища
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let tasks = [];
+
+try {
+    const savedTasks = JSON.parse(localStorage.getItem('individualTodoTasks'));
+    tasks = Array.isArray(savedTasks) ? savedTasks : [];
+} catch (error) {
+    tasks = [];
+}
 
 let currentFilter = 'all';
 
