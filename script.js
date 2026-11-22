@@ -1,111 +1,169 @@
-```javascript
-const form = document.getElementById('todo-form');
-const input = document.getElementById('todo-input');
-const list = document.getElementById('todo-list');
-const count = document.getElementById('task-count');
-const filterButtons = document.querySelectorAll('.filters button');
 
-// Завантаження завдань зі сховища
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+/* ==================================================
+   ПРАКТИЧНА РОБОТА №3
+   ТЕМА: РОБОТА З МАСИВАМИ
+================================================== */
 
-let currentFilter = 'all';
+// Початковий масив чисел
+const numbers = [2, 5, 8, 11, 14, 17, 20];
 
-// Збереження завдань
-function saveTasks() {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+// Функція для обчислення суми елементів масиву
+function calculateSum(array) {
+    return array.reduce((sum, number) => sum + number, 0);
 }
 
-// Відображення кількості завдань
-function updateCount() {
-    const activeTasks = tasks.filter(task => !task.completed).length;
-    count.textContent = `Усього завдань: ${tasks.length} | Активних: ${activeTasks}`;
-}
+// Відбір парних чисел за допомогою filter()
+const evenNumbers = numbers.filter(number => number % 2 === 0);
 
-// Відображення списку
-function renderTasks() {
-    list.innerHTML = '';
+// Подвоєння кожного числа за допомогою map()
+const doubledNumbers = numbers.map(number => number * 2);
 
-    const filteredTasks = tasks.filter(task => {
-        if (currentFilter === 'active') {
-            return !task.completed;
-        }
+// Виведення результатів у консоль
+console.log("ПРАКТИЧНА РОБОТА №3");
+console.log("Початковий масив:", numbers);
+console.log("Сума чисел:", calculateSum(numbers));
+console.log("Парні числа:", evenNumbers);
+console.log("Подвоєні числа:", doubledNumbers);
 
-        if (currentFilter === 'completed') {
-            return task.completed;
-        }
+// Виведення результатів на вебсторінку
+const showResultButton = document.getElementById("show-js-result");
+const jsResult = document.getElementById("js-result");
 
-        return true;
+if (showResultButton && jsResult) {
+    showResultButton.addEventListener("click", function () {
+        jsResult.innerHTML = `
+            <p><strong>Початковий масив:</strong> ${numbers.join(", ")}</p>
+            <p><strong>Сума чисел:</strong> ${calculateSum(numbers)}</p>
+            <p><strong>Парні числа:</strong> ${evenNumbers.join(", ")}</p>
+            <p><strong>Подвоєні числа:</strong> ${doubledNumbers.join(", ")}</p>
+        `;
     });
+}
 
-    filteredTasks.forEach(task => {
-        const li = document.createElement('li');
 
-        if (task.completed) {
-            li.classList.add('completed');
+/* ==================================================
+   ПРАКТИЧНА РОБОТА №4
+   ТЕМА: DOM ТА ОБРОБКА ПОДІЙ
+================================================== */
+
+// Отримання HTML-елементів
+const todoForm = document.getElementById("todo-form");
+const todoInput = document.getElementById("todo-input");
+const todoList = document.getElementById("todo-list");
+
+// Перевірка наявності потрібних елементів
+if (todoForm && todoInput && todoList) {
+
+    // Обробка відправлення форми
+    todoForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Отримання тексту справи
+        const taskText = todoInput.value.trim();
+
+        // Перевірка порожнього поля
+        if (taskText === "") {
+            alert("Введіть назву справи!");
+            return;
         }
 
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.checked = task.completed;
+        // Створення нового елемента списку
+        const listItem = document.createElement("li");
+        listItem.textContent = taskText;
 
-        checkbox.addEventListener('change', () => {
-            task.completed = checkbox.checked;
-            saveTasks();
-            renderTasks();
+        // Створення кнопки видалення
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Видалити";
+
+        // Обробка натискання кнопки видалення
+        deleteButton.addEventListener("click", function () {
+            listItem.remove();
         });
 
-        const span = document.createElement('span');
-        span.textContent = task.text;
+        // Додавання кнопки до елемента списку
+        listItem.appendChild(deleteButton);
 
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Видалити';
+        // Додавання справи до списку
+        todoList.appendChild(listItem);
 
-        deleteButton.addEventListener('click', () => {
-            tasks = tasks.filter(item => item.id !== task.id);
-            saveTasks();
-            renderTasks();
-        });
-
-        li.appendChild(checkbox);
-        li.appendChild(span);
-        li.appendChild(deleteButton);
-
-        list.appendChild(li);
+        // Очищення поля введення
+        todoInput.value = "";
     });
-
-    updateCount();
 }
 
-// Додавання нового завдання
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
 
-    const text = input.value.trim();
+/* ==================================================
+   ПРАКТИЧНА РОБОТА №5
+   ТЕМА: АСИНХРОННІСТЬ ТА FETCH API
+================================================== */
 
-    if (text === '') {
+// Отримання HTML-елементів
+const loadButton = document.getElementById("load-posts");
+const postsList = document.getElementById("posts-list");
+const errorMessage = document.getElementById("error-message");
+
+// Асинхронна функція для завантаження даних
+async function loadPosts() {
+
+    // Перевірка наявності елементів на сторінці
+    if (!postsList || !errorMessage) {
         return;
     }
 
-    tasks.push({
-        id: Date.now(),
-        text: text,
-        completed: false
-    });
+    try {
+        // Очищення попередніх результатів
+        postsList.innerHTML = "";
+        errorMessage.textContent = "Завантаження даних...";
 
-    saveTasks();
-    renderTasks();
+        // Отримання даних із JSONPlaceholder
+        const response = await fetch(
+            "https://jsonplaceholder.typicode.com/posts?_limit=10"
+        );
 
-    input.value = '';
-});
+        // Перевірка успішності запиту
+        if (!response.ok) {
+            throw new Error("Помилка завантаження даних");
+        }
 
-// Фільтри завдань
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        currentFilter = button.dataset.filter;
-        renderTasks();
-    });
-});
+        // Перетворення відповіді у формат JSON
+        const posts = await response.json();
 
-// Початкове відображення
-renderTasks();
-```
+        // Очищення повідомлення про завантаження
+        errorMessage.textContent = "";
+
+        // Виведення отриманих записів на сторінку
+        posts.forEach(function (post) {
+
+            // Створення елемента списку
+            const listItem = document.createElement("li");
+
+            // Створення заголовка запису
+            const title = document.createElement("strong");
+            title.textContent = post.title;
+
+            // Створення опису запису
+            const description = document.createElement("p");
+            description.textContent = post.body;
+
+            // Додавання заголовка та опису
+            listItem.appendChild(title);
+            listItem.appendChild(description);
+
+            // Додавання запису до списку
+            postsList.appendChild(listItem);
+        });
+
+    } catch (error) {
+
+        // Виведення повідомлення про помилку
+        errorMessage.textContent =
+            "Не вдалося завантажити дані. Перевірте підключення до інтернету.";
+
+        console.error("Помилка:", error);
+    }
+}
+
+// Обробка натискання кнопки завантаження
+if (loadButton && postsList && errorMessage) {
+    loadButton.addEventListener("click", loadPosts);
+}

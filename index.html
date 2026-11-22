@@ -4,52 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мій список справ</title>
+
+    <title>Про мене — Вероніка</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>Мій список справ</h1>
-        <p>Плануй свій день та досягай цілей!</p>
-        <nav>
-            <a href="../index.html">Головна</a>
-            <a href="../works.html">Практичні роботи</a>
-            <a href="index.html">Індивідуальний проєкт</a>
-        </nav>
+        <h1>Привіт! Я Вероніка</h1>
+        <p>Студентка спеціальності «Інженерія програмного забезпечення»</p>
     </header>
 
+    <nav>
+        <a href="#about">Про мене</a>
+        <a href="#skills">Навички</a>
+        <a href="#contacts">Контакти</a>
+        <a href="works.html">Практичні роботи</a>
+        <a href="individual-project/index.html">Індивідуальний проєкт</a>
+    </nav>
+
     <main>
-        <section class="todo-container">
-            <h2>Мої завдання</h2>
 
-            <form id="todo-form">
-                <input
-                    type="text"
-                    id="todo-input"
-                    placeholder="Введіть нове завдання..."
-                    required
-                >
-                <button type="submit">Додати</button>
-            </form>
+        <section id="about">
+            <h2>Про мене</h2>
 
-            <div class="filters">
-                <button type="button" data-filter="all">Усі</button>
-                <button type="button" data-filter="active">Активні</button>
-                <button type="button" data-filter="completed">Виконані</button>
-            </div>
+            <p>
+                Я студентка, яка вивчає програмування,
+                веброзробку та сучасні інформаційні технології.
+                Мені цікаво створювати вебсайти та
+                розвиватися у сфері IT.
+            </p>
 
-            <ul id="todo-list"></ul>
-
-            <p id="task-count">Завдань: 0</p>
+            <img
+                src="images/my-photo1.jpg"
+                alt="Моє особисте фото"
+                width="300"
+            >
         </section>
+
+        <section id="skills">
+            <h2>Мої навички</h2>
+
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Основи React</li>
+                <li>Робота з базами даних</li>
+            </ul>
+        </section>
+
+        <section id="contacts">
+            <h2>Контакти</h2>
+
+            <p>
+                Мій GitHub:
+                <a href="https://github.com/nrshh77" target="_blank" rel="noopener noreferrer">
+                    Перейти на GitHub
+                </a>
+            </p>
+        </section>
+
     </main>
 
     <footer>
-        <p>Індивідуальний проєкт з вебпрограмування © 2026</p>
+        <p>© 2026. Сторінка створена в рамках практичного завдання.</p>
     </footer>
 
     <script src="script.js"></script>
+
 </body>
 </html>
 ```
