@@ -1,16 +1,44 @@
-# React + Vite
+# Практичні роботи з вебпрограмування
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Про проєкт
 
-Currently, two official plugins are available:
+Цей репозиторій містить практичні роботи з вебпрограмування та індивідуальний мініпроєкт.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Індивідуальний мініпроєкт — To-Do List
 
-## React Compiler
+Інтерактивний список справ, який дозволяє:
+- Додавати нові завдання.
+- Видаляти виконані або непотрібні завдання.
+- Зберігати список справ після перезавантаження сторінки.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Використані технології
 
-## Expanding the Oxlint configuration
+- HTML5 — семантична структура сторінки.
+- CSS3 — оформлення та адаптивний дизайн.
+- JavaScript — інтерактивність і робота з DOM.
+- LocalStorage — збереження списку справ.
+- Fetch API — завантаження даних із відкритого API.
+- React та Vite — виконання практичних робіт №7–8.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Як запустити проєкт
+
+1. Завантажити або клонувати репозиторій.
+2. Встановити [Node.js](https://nodejs.org/).
+3. Відкрити термінал у папці проєкту.
+4. Виконати команду:
+
+   ```bash
+   npm install
+   ```
+
+5. Запустити проєкт:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Відкрити адресу, яку покаже термінал, у браузері.
+
+## Автор
+
+Навчальний проєкт з вебпрограмування.
