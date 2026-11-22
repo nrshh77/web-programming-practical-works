@@ -1,0 +1,114 @@
+
+.App {
+  text-align: center;
+  padding: 30px 20px;
+  font-family: Arial, sans-serif;
+  color: #443451;
+}
+
+.App h1 {
+  color: #8064a2;
+}
+
+section {
+  background-color: white;
+  padding: 25px;
+  margin: 25px auto;
+  max-width: 1000px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  color: #8064a2;
+}
+
+.users-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.user-card {
+  background-color: #f4f0f8;
+  border: 1px solid #e3d9ed;
+  border-radius: 15px;
+  padding: 20px;
+  width: 230px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+}
+
+.user-card h2 {
+  color: #8064a2;
+}
+
+.user-card p {
+  overflow-wrap: anywhere;
+}
+
+.counter,
+.text-input {
+  margin: 25px auto;
+}
+
+.counter h3,
+.text-input h3 {
+  color: #8064a2;
+}
+
+button {
+  background-color: #8064a2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin: 7px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #684b88;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid #cdbddd;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 350px;
+  font-size: 16px;
+}
+
+.text-input p {
+  color: #684b88;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .App {
+    padding: 15px 10px;
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  .users-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user-card {
+    width: 100%;
+    max-width: 300px;
+  }
+}

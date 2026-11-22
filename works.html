@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практичні роботи — Вероніка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Мої практичні роботи</h1>
+        <p>Виконання практичних завдань з веброзробки</p>
+    </header>
+
+   
+<nav>
+    <a href="index.html">Головна</a>
+    <a href="works.html">Практичні роботи</a>
+</nav>
+
+
+    <main>
+
+        <section id="works">
+            <h2>Список практичних робіт</h2>
+
+            <div class="works-container">
+
+                <div class="work-card">
+                    <h3>Практична робота №1</h3>
+                    <p>Створення HTML-сторінки «Про мене» з використанням семантичних тегів.</p>
+                    <a href="index.html">Відкрити роботу №1</a>
+                </div>
+
+                <div class="work-card">
+                    <h3>Практична робота №2</h3>
+                    <p>Оформлення вебсторінки за допомогою CSS, Flexbox, Grid та адаптивного дизайну.</p>
+                    <a href="index.html">Переглянути оформлення</a>
+                </div>
+
+                <div class="work-card">
+                    <h3>Практична робота №3</h3>
+                    <p>Робота з масивами JavaScript: сума, фільтрація та перетворення елементів.</p>
+                    <button id="show-js-result">Показати результат</button>
+                    <div id="js-result"></div>
+                </div>
+
+                <div class="work-card">
+                    <h3>Практична робота №4</h3>
+                    <p>Створення списку завдань із використанням DOM та обробників подій.</p>
+                    <a href="#todo">Відкрити To-Do список</a>
+                </div>
+
+                <div class="work-card">
+                    <h3>Практична робота №5</h3>
+                    <p>Отримання та відображення даних із зовнішнього API за допомогою Fetch.</p>
+                    <a href="#posts">Переглянути API</a>
+                </div>
+
+                <div class="work-card">
+                    <h3>Практична робота №6</h3>
+                    <p>Створення таблиці студентів та виконання SQL-запитів.</p>
+                    <a href="#sql-demo">Переглянути SQL-завдання</a>
+                </div>
+
+                <div class="work-card">
+                    <h3>Практична робота №7</h3>
+                    <p>Створення React-компонента UserCard та відображення карток користувачів через map().</p>
+                    <a href="http://localhost:5174/work7" target="_blank" rel="noopener noreferrer">
+                        Відкрити практичну №7
+                    </a>
+                </div>
+
+                <div class="work-card">
+                    <h3>Практична робота №8</h3>
+                    <p>Використання React useState: лічильник та поле введення тексту.</p>
+                    <a href="http://localhost:5174/work8" target="_blank" rel="noopener noreferrer">
+                        Відкрити практичну №8
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="todo">
+            <h2>Практична робота №4 — To-Do список</h2>
+            <p>Додай завдання до списку та видаляй виконані або непотрібні завдання.</p>
+
+            <form id="todo-form">
+                <input
+                    type="text"
+                    id="todo-input"
+                    placeholder="Введіть нове завдання"
+                    required
+                >
+                <button type="submit">Додати</button>
+            </form>
+
+            <ul id="todo-list"></ul>
+        </section>
+
+        <section id="posts">
+            <h2>Практична робота №5 — Fetch API</h2>
+            <p>Завантаження дописів із сервісу JSONPlaceholder.</p>
+
+            <button id="load-posts">Завантажити дописи</button>
+
+            <p id="error-message"></p>
+            <ul id="posts-list"></ul>
+        </section>
+
+        <section id="sql-demo">
+            <h2>Практична робота №6 — SQL</h2>
+            <p>Приклад SQL-запитів для роботи з таблицею студентів.</p>
+
+            <pre><code>-- Створення таблиці студентів
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    "group" VARCHAR(50),
+    mark INT
+);
+
+-- Вибір студентів з оцінкою більше 80
+SELECT *
+FROM students
+WHERE mark > 80
+ORDER BY name ASC;
+
+-- Оновлення оцінки студента
+UPDATE students
+SET mark = 90
+WHERE id = 2;
+
+-- Видалення студента
+DELETE FROM students
+WHERE id = 4;</code></pre>
+
+            <a href="students.sql" download>Завантажити SQL-файл</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Вероніка. Мої практичні роботи з веброзробки.</p>
+        <a href="index.html">Повернутися на головну</a>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
