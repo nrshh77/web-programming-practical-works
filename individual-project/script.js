@@ -9,7 +9,10 @@ const filterButtons = document.querySelectorAll('.filters button');
 let tasks = [];
 
 try {
-    const savedTasks = JSON.parse(localStorage.getItem('individualTodoTasks'));
+    const savedTasks = JSON.parse(
+        localStorage.getItem('individualTodoTasks')
+    );
+
     tasks = Array.isArray(savedTasks) ? savedTasks : [];
 } catch (error) {
     tasks = [];
@@ -19,13 +22,20 @@ let currentFilter = 'all';
 
 // Збереження завдань
 function saveTasks() {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem(
+        'individualTodoTasks',
+        JSON.stringify(tasks)
+    );
 }
 
 // Відображення кількості завдань
 function updateCount() {
-    const activeTasks = tasks.filter(task => !task.completed).length;
-    count.textContent = `Усього завдань: ${tasks.length} | Активних: ${activeTasks}`;
+    const activeTasks = tasks.filter(
+        task => !task.completed
+    ).length;
+
+    count.textContent =
+        `Усього завдань: ${tasks.length} | Активних: ${activeTasks}`;
 }
 
 // Відображення списку
@@ -51,6 +61,7 @@ function renderTasks() {
             li.classList.add('completed');
         }
 
+        // Прапорець виконання
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = task.completed;
@@ -61,10 +72,13 @@ function renderTasks() {
             renderTasks();
         });
 
+        // Текст завдання
         const span = document.createElement('span');
         span.textContent = task.text;
 
+        // Кнопка видалення
         const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
         deleteButton.textContent = 'Видалити';
 
         deleteButton.addEventListener('click', () => {
@@ -105,7 +119,7 @@ form.addEventListener('submit', function(event) {
     input.value = '';
 });
 
-// Фільтри завдань
+// Фільтрація завдань
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
         currentFilter = button.dataset.filter;
